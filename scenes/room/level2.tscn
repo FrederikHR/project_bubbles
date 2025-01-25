@@ -10,23 +10,23 @@
 [node name="Pencil" parent="." instance=ExtResource("2_2yanl")]
 position = Vector2(296, 485)
 rotation = -2.35619
-Direction = "RIGHT_UP_DIAGONAL"
 WaitTime = 1.0
+direction = 4
 
 [node name="Pencil2" parent="." instance=ExtResource("2_2yanl")]
 position = Vector2(630, 485)
 rotation = 2.35619
-Direction = "LEFT_UP_DIAGONAL"
 WaitTime = 1.0
+direction = 5
 
 [node name="Pencil3" parent="." instance=ExtResource("2_2yanl")]
 position = Vector2(630, 148)
 rotation = 0.785398
-Direction = "RIGHT_DOWN_DIAGONAL"
 WaitTime = 1.0
+direction = 6
 
 [node name="Pencil4" parent="." instance=ExtResource("2_2yanl")]
 position = Vector2(296, 148)
 rotation = -0.785398
-Direction = "LEFT_DOWN_DIAGONAL"
 WaitTime = 1.0
+direction = 7
