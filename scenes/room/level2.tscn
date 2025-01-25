@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt0jc0bw5rika"]
+
+[ext_resource type="PackedScene" uid="uid://txouyjemv1v" path="res://scenes/room/room.tscn" id="1_fxed4"]
+[ext_resource type="PackedScene" uid="uid://trlyg73nop7f" path="res://scenes/pencil/pencil.tscn" id="2_2yanl"]
+
+[node name="Level2" type="Node2D"]
+
+[node name="Room" parent="." instance=ExtResource("1_fxed4")]
+
+[node name="Pencil" parent="." instance=ExtResource("2_2yanl")]
+position = Vector2(296, 485)
+rotation = -2.35619
+Direction = "RIGHT_UP_DIAGONAL"
+WaitTime = 1.0
+
+[node name="Pencil2" parent="." instance=ExtResource("2_2yanl")]
+position = Vector2(630, 485)
+rotation = 2.35619
+Direction = "LEFT_UP_DIAGONAL"
+WaitTime = 1.0
+
+[node name="Pencil3" parent="." instance=ExtResource("2_2yanl")]
+position = Vector2(630, 148)
+rotation = 0.785398
+Direction = "RIGHT_DOWN_DIAGONAL"
+WaitTime = 1.0
+
+[node name="Pencil4" parent="." instance=ExtResource("2_2yanl")]
+position = Vector2(296, 148)
+rotation = -0.785398
+Direction = "LEFT_DOWN_DIAGONAL"
+WaitTime = 1.0
