@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://txouyjemv1v"]
+
+[ext_resource type="Texture2D" uid="uid://b2ul828654awp" path="res://assets/room.png" id="1_5c2gy"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_15m48"]
+a = Vector2(424, -26)
+b = Vector2(8, -25)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_j84lj"]
+a = Vector2(175.5, -71.5)
+b = Vector2(175.5, 269)
+
+[node name="Room" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(67, 205)
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Area2D"]
+offset_left = -113.0
+offset_top = -152.0
+offset_right = 895.0
+offset_bottom = 364.0
+texture = ExtResource("1_5c2gy")
+expand_mode = 1
+
+[node name="TopCollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(43, -44)
+scale = Vector2(2, 2)
+shape = SubResource("SegmentShape2D_15m48")
+
+[node name="BottomCollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2, 371)
+scale = Vector2(2, 2)
+shape = SubResource("SegmentShape2D_15m48")
+
+[node name="RightCollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(253, -112)
+scale = Vector2(2, 2)
+shape = SubResource("SegmentShape2D_j84lj")
+
+[node name="LeftCollisionShape2D4" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-162, -189)
+scale = Vector2(2, 2)
+shape = SubResource("SegmentShape2D_j84lj")
