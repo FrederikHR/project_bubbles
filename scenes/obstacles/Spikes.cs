@@ -21,6 +21,7 @@ public partial class Spikes : CharacterBody2D
         //spikes = GetNode<Sprite2D>("./Spikes");
         timer = GetNode<Timer>("./LaunchTimer");
         timer.WaitTime = WaitTime;
+        timer.Start();
         GD.Print("WaitTime: ", timer.WaitTime);
     }
 
