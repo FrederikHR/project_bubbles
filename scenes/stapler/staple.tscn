@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://brope2eken15a"]
+
+[ext_resource type="Script" path="res://scenes/stapler/Staple.cs" id="1_7ohb5"]
+[ext_resource type="Texture2D" uid="uid://duawdssb8dnfv" path="res://assets/stapler.png" id="1_g54na"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_akhrf"]
+size = Vector2(4, 2)
+
+[node name="Staple" type="Node2D"]
+script = ExtResource("1_7ohb5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_g54na")
+region_enabled = true
+region_rect = Rect2(55, 15, 4, 4)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_akhrf")
