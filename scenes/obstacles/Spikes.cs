@@ -26,23 +26,21 @@ public partial class Spikes : Obstacle
         Vector2 velocity = Velocity;
         if (Launch)
         {
-            if (Direction == "RIGHT")
+            switch (direction) 
             {
-                velocity.X += speed;
+                case Direction.RIGHT:
+                    velocity.X += speed;
+                    break;
+                case Direction.LEFT:
+                    velocity.X -= speed;
+                    break;
+                case Direction.UP:
+                    velocity.Y -= speed;
+                    break;
+                case Direction.DOWN:
+                    velocity.Y += speed;
+                    break;
             }
-            else if (Direction == "LEFT")
-            {
-                velocity.X -= speed;
-            }
-            else if (Direction == "UP")
-            {
-                velocity.Y -= speed;
-            }
-            else if (Direction == "DOWN")
-            {
-                velocity.Y += speed;
-            }
-            ;
             Velocity = velocity;
 
             MoveAndSlide();

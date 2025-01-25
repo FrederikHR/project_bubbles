@@ -9,23 +9,22 @@
 
 [node name="Spikes" parent="Room" instance=ExtResource("2_f1cm0")]
 position = Vector2(73, 351)
-Direction = "UP"
 WaitTime = 1.0
 
 [node name="Spikes2" parent="Room" instance=ExtResource("2_f1cm0")]
 position = Vector2(427, -34)
 rotation = 1.5708
-Direction = "RIGHT"
 WaitTime = 2.0
+direction = 3
 
 [node name="Spikes3" parent="Room" instance=ExtResource("2_f1cm0")]
 position = Vector2(864, 284)
 rotation = -3.14159
-Direction = "DOWN"
 WaitTime = 3.0
+direction = 1
 
 [node name="Spikes4" parent="Room" instance=ExtResource("2_f1cm0")]
 position = Vector2(497, 721)
 rotation = -1.5708
-Direction = "LEFT"
 WaitTime = 4.0
+direction = 2
