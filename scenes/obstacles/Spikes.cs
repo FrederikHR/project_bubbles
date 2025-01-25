@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Spikes : CharacterBody2D
+public partial class Spikes : Obstacle
 {
     [Export]
     private string Direction;
@@ -28,6 +28,17 @@ public partial class Spikes : CharacterBody2D
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
+        move();
+    }
+
+    private void _on_launch_timer_timeout()
+    {
+        GD.Print("Timer ended");
+        Launch = true;
+    }
+
+    public override void move()
+    {
         Vector2 velocity = Velocity;
         if (Launch)
         {
@@ -52,11 +63,5 @@ public partial class Spikes : CharacterBody2D
 
             MoveAndSlide();
         }
-    }
-
-    private void _on_launch_timer_timeout()
-    {
-        GD.Print("Timer ended");
-        Launch = true;
     }
 }
