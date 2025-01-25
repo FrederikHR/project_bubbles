@@ -21,3 +21,5 @@ rotation = -3.14159
 [node name="Spikes4" parent="Room" instance=ExtResource("2_f1cm0")]
 position = Vector2(497, 721)
 rotation = -1.5708
+
+[node name="Timer" type="Timer" parent="."]
