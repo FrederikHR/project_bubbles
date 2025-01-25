@@ -4,16 +4,16 @@ using System;
 public partial class Obstacle : CharacterBody2D
 {
     [Export]
-    private string Direction;
+    protected string Direction;
 
     [Export]
-    private float WaitTime;
+    protected float WaitTime;
 
     [Export]
-    private bool Launch = false;
+    protected bool Launch = false;
 
-    private int speed = 10;
-    private Timer timer;
+    protected int speed = 10;
+    protected Timer timer;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
