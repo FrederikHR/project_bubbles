@@ -6,6 +6,10 @@ public partial class Stapler : Node2D
     [Export]
     public float staplerTopRotation = 0.0f;
 
+    [Export(PropertyHint.Enum, "0,90,180,270")]
+    public int testEnum = 0;
+
+
     private Sprite2D staplerTopSprite;
 
     // Called when the node enters the scene tree for the first time.
@@ -35,8 +39,10 @@ public partial class Stapler : Node2D
         Staple newStaple = GD.Load<PackedScene>("res://scenes/stapler/staple.tscn")
             .Instantiate<Staple>();
 
-        AddChild(newStaple);
-        Vector2 offset = new Vector2(40, 20).Rotated(Mathf.De);
+        newStaple.Speed = 500;
+
+        GetParent().AddChild(newStaple);
+        Vector2 offset = new Vector2(50, 5).Rotated(Mathf.DegToRad(staplerTopRotation));
         newStaple.GlobalPosition = staplerTopSprite.GlobalPosition + offset;
         newStaple.RotationDegrees = staplerTopRotation;
     }

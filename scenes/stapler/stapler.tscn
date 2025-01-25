@@ -6,7 +6,7 @@
 [node name="Stapler" type="Node2D"]
 position = Vector2(361, 419)
 script = ExtResource("1_3sbmb")
-staplerTopRotation = -60.0
+staplerTopRotation = -90.0
 
 [node name="StaplerBottom" type="Sprite2D" parent="."]
 texture_filter = 1
