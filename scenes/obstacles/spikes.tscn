@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqnhahrw6ocpc"]
+
+[ext_resource type="Script" path="res://scenes/obstacles/Spikes.cs" id="1_c1oxt"]
+[ext_resource type="Texture2D" uid="uid://b6gps65jtsuaq" path="res://assets/filledSpikes.png" id="1_jbiq1"]
+
+[node name="Spikes" type="CharacterBody2D"]
+script = ExtResource("1_c1oxt")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 546.0
+offset_bottom = 307.0
+texture = ExtResource("1_jbiq1")
+expand_mode = 1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(198, 170, 217, 135, 236, 170, 254, 135, 273, 170, 291, 135, 310, 170, 329, 135, 348, 170)
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+
+[node name="LaunchTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="LaunchTimer" to="." method="_on_launch_timer_timeout"]

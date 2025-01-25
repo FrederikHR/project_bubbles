@@ -1,7 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://dt5ubmi2dgjp0"]
+[gd_scene load_steps=3 format=3 uid="uid://dt5ubmi2dgjp0"]
 
 [ext_resource type="PackedScene" uid="uid://txouyjemv1v" path="res://scenes/room/room.tscn" id="1_n06rr"]
+[ext_resource type="PackedScene" uid="uid://cqnhahrw6ocpc" path="res://scenes/obstacles/spikes.tscn" id="2_f1cm0"]
 
 [node name="Level1" type="Node2D"]
 
 [node name="Room" parent="." instance=ExtResource("1_n06rr")]
+
+[node name="Spikes" parent="Room" instance=ExtResource("2_f1cm0")]
+position = Vector2(73, 351)
+WaitTime = 1.0
+
+[node name="Spikes2" parent="Room" instance=ExtResource("2_f1cm0")]
+position = Vector2(427, -34)
+rotation = 1.5708
+WaitTime = 2.0
+direction = 3
+
+[node name="Spikes3" parent="Room" instance=ExtResource("2_f1cm0")]
+position = Vector2(864, 284)
+rotation = -3.14159
+WaitTime = 3.0
+direction = 1
+
+[node name="Spikes4" parent="Room" instance=ExtResource("2_f1cm0")]
+position = Vector2(497, 721)
+rotation = -1.5708
+WaitTime = 4.0
+direction = 2
