@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1jytdaxjoykj"]
+
+[ext_resource type="Script" path="res://scenes/stapler/Stapler.cs" id="1_3sbmb"]
+[ext_resource type="Texture2D" uid="uid://duawdssb8dnfv" path="res://assets/stapler.png" id="1_r40om"]
+
+[node name="Stapler" type="Node2D"]
+script = ExtResource("1_3sbmb")
+staplerTopRotation = -90.0
+
+[node name="StaplerBottom" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_r40om")
+region_enabled = true
+region_rect = Rect2(0, 19, 69, 16)
+
+[node name="StaplerTop" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-26, -10)
+texture = ExtResource("1_r40om")
+offset = Vector2(27, 0)
+region_enabled = true
+region_rect = Rect2(2, 0, 64, 12)
+
+[node name="FiringTimer" type="Timer" parent="."]
+
+[node name="StartTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true

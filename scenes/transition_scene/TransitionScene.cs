@@ -3,6 +3,9 @@ using System;
 
 public partial class TransitionScene : Control
 {
+    [Export(PropertyHint.Range, "0.0,1.5")]
+    public float irisValue = 1.5f;
+
     private AnimationPlayer _animationPlayer;
     private ShaderMaterial _shaderMaterial;
 
@@ -11,6 +14,8 @@ public partial class TransitionScene : Control
     {
         _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         _shaderMaterial = (ShaderMaterial)GetNode<ColorRect>("IrisTransition").Material;
+        _shaderMaterial.SetShaderParameter("radius", irisValue);
+        IrisOpen();
     }
 
     public async void IrisClose()
