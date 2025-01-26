@@ -12,11 +12,10 @@ offset_bottom = 307.0
 texture = ExtResource("1_jbiq1")
 expand_mode = 1
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(198, 170, 217, 135, 236, 170, 254, 135, 273, 170, 291, 135, 310, 170, 329, 135, 348, 170)
-
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(198, 170, 217, 135, 329, 135, 348, 170)
 
 [node name="LaunchTimer" type="Timer" parent="."]
 one_shot = true
