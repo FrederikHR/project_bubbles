@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://deb8m8jje6q5o"]
+
+[ext_resource type="Script" path="res://scenes/obstacles/Rocket.cs" id="1_dm76m"]
+[ext_resource type="Texture2D" uid="uid://6nf4g311lttx" path="res://assets/rocket.png" id="2_eoxos"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3sqv7"]
+size = Vector2(22.875, 53.5)
+
+[node name="Rocket" type="CharacterBody2D"]
+position = Vector2(373, -352)
+script = ExtResource("1_dm76m")
+
+[node name="LaunchTimer" type="Timer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -282.0
+offset_top = 687.0
+offset_right = -140.0
+offset_bottom = 767.0
+texture = ExtResource("2_eoxos")
+expand_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-210, 719)
+shape = SubResource("RectangleShape2D_3sqv7")
+
+[connection signal="timeout" from="LaunchTimer" to="." method="_on_launch_timer_timeout"]
