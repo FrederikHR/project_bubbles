@@ -4,6 +4,9 @@ using System;
 public partial class Staple : Node2D
 {
     public float Speed { get; set; } = 500.0f;
+
+    public Stapler Stapler;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -30,6 +33,9 @@ public partial class Staple : Node2D
         if (body.IsInGroup("player"))
         {
             GD.Print("Player hit by staple");
+            body.CallDeferred("queue_free");
+            Stapler.playerReference = null;
+            QueueFree();
             return;
         }
 

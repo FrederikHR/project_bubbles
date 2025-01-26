@@ -62,6 +62,7 @@ public partial class Stapler : Node2D
             .Instantiate<Staple>();
 
         newStaple.Speed = stapleSpeed;
+        newStaple.Stapler = this;
 
         GetParent().AddChild(newStaple);
         Vector2 offset = new Vector2(50, 0).Rotated(Mathf.DegToRad(staplerTopRotation));
