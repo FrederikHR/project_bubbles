@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://duawdssb8dnfv" path="res://assets/stapler.png" id="1_r40om"]
 
 [node name="Stapler" type="Node2D"]
-position = Vector2(361, 419)
 script = ExtResource("1_3sbmb")
 staplerTopRotation = -90.0
 
@@ -21,3 +20,9 @@ texture = ExtResource("1_r40om")
 offset = Vector2(27, 0)
 region_enabled = true
 region_rect = Rect2(2, 0, 64, 12)
+
+[node name="FiringTimer" type="Timer" parent="."]
+
+[node name="StartTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true

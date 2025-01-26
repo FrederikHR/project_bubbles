@@ -26,8 +26,10 @@ public partial class Staple : Node2D
 
     private void OnArea2DBodyEntered(Node body)
     {
-        if (body is Stapler)
+        //CHeck if body in group "player"
+        if (body.IsInGroup("player"))
         {
+            GD.Print("Player hit by staple");
             return;
         }
 
