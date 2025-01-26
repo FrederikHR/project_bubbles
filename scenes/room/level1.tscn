@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dt5ubmi2dgjp0"]
+[gd_scene load_steps=4 format=3 uid="uid://dt5ubmi2dgjp0"]
 
 [ext_resource type="PackedScene" uid="uid://txouyjemv1v" path="res://scenes/room/room.tscn" id="1_n06rr"]
 [ext_resource type="PackedScene" uid="uid://cqnhahrw6ocpc" path="res://scenes/obstacles/spikes.tscn" id="2_f1cm0"]
+[ext_resource type="PackedScene" uid="uid://bbrki0i4p0s5e" path="res://scenes/player/player.tscn" id="3_euvcu"]
 
 [node name="Level1" type="Node2D"]
 
@@ -28,3 +29,6 @@ position = Vector2(497, 721)
 rotation = -1.5708
 WaitTime = 4.0
 direction = 2
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("3_euvcu")]
+position = Vector2(465, 307)

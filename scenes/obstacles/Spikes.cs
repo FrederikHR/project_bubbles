@@ -3,16 +3,21 @@ using System;
 
 public partial class Spikes : Obstacle
 {
+    private Area2D _area2D;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         base._Ready();
+
+        _area2D = GetNode<Area2D>("Area2D");
+        _area2D.BodyEntered += OnArea2DBodyEntered;
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
-        move();
+        move(delta);
     }
 
     private void _on_launch_timer_timeout()
@@ -21,7 +26,7 @@ public partial class Spikes : Obstacle
         Launch = true;
     }
 
-    public override void move()
+    public override void move(double delta)
     {
         Vector2 velocity = Velocity;
         if (Launch)
@@ -29,21 +34,30 @@ public partial class Spikes : Obstacle
             switch (direction) 
             {
                 case Direction.RIGHT:
-                    velocity.X += speed;
+                    velocity.X += speed * (float)delta;
                     break;
                 case Direction.LEFT:
-                    velocity.X -= speed;
+                    velocity.X -= speed * (float)delta;
                     break;
                 case Direction.UP:
-                    velocity.Y -= speed;
+                    velocity.Y -= speed * (float)delta;
                     break;
                 case Direction.DOWN:
-                    velocity.Y += speed;
+                    velocity.Y += speed * (float)delta;
                     break;
             }
             Velocity = velocity;
 
             MoveAndSlide();
+        }
+    }
+
+    private void OnArea2DBodyEntered(Node body)
+    {
+        if (body.IsInGroup("player"))
+        {
+            Player player = (Player)body;
+            player.CallDeferred("Die");
         }
     }
 }

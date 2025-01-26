@@ -3,6 +3,9 @@ using System;
 
 public partial class StartScreen : Control
 {
+    [Signal]
+    public delegate void StartGameEventHandler();
+
     private Button _startButton;
     private Button _quitButton;
 
@@ -23,6 +26,7 @@ public partial class StartScreen : Control
     {
         //Hide the start screen
         Visible = false;
+        EmitSignal(SignalName.StartGame);
     }
 
     private void OnQuitButtonPressed()

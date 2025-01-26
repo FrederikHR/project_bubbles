@@ -3,6 +3,9 @@ using System;
 
 public partial class Player : CharacterBody2D
 {
+    [Signal]
+    public delegate void DiedEventHandler();
+
     [Export]
     public float Speed = 200.0f;
 
@@ -72,5 +75,11 @@ public partial class Player : CharacterBody2D
             // Rotate the wind sprite to face the wind direction.
             WindSprite.Rotation = windDirection.Angle();
         }
+    }
+
+    public void Die()
+    {
+        EmitSignal(SignalName.Died);
+        CallDeferred("queue_free");
     }
 }

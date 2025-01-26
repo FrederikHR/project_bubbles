@@ -9,7 +9,7 @@ public partial class Obstacle : CharacterBody2D
     [Export]
     protected bool Launch = false;
 
-    protected int speed = 10;
+    protected int speed = 100;
     protected Timer timer;
 
     protected enum Direction
@@ -39,5 +39,5 @@ public partial class Obstacle : CharacterBody2D
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta) { }
 
-    public virtual void move() { }
+    public virtual void move(double delta) { }
 }
