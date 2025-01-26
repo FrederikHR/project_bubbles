@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://trlyg73nop7f"]
+
+[ext_resource type="Script" path="res://scenes/pencil/Pencil.cs" id="1_6x5vc"]
+[ext_resource type="Texture2D" uid="uid://df2c82lfolqto" path="res://assets/pencil.png" id="1_o3rw6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c11bq"]
+size = Vector2(13, 118)
+
+[node name="Pencil" type="CharacterBody2D"]
+position = Vector2(-117, -45)
+collision_mask = 0
+script = ExtResource("1_6x5vc")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -246.0
+offset_top = -89.0
+offset_right = 187.0
+offset_bottom = 116.0
+texture = ExtResource("1_o3rw6")
+expand_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 1)
+shape = SubResource("RectangleShape2D_c11bq")
+
+[node name="LaunchTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="LaunchTimer" to="." method="_on_launch_timer_timeout"]
