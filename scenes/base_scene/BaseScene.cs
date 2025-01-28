@@ -12,11 +12,17 @@ public partial class BaseScene : Node
     private StartScreen _startScreen;
     private TransitionScene _transitionScene;
 
+    private Timer survivalTimer;
+    private bool _isTransitioningToNextLevel = false;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         _startScreen = GetNode<StartScreen>("StartScreen");
         _startScreen.StartGame += OnStartGame;
+
+        survivalTimer = GetNode<Timer>("SurvivalTimer");
+        survivalTimer.Timeout += OnSurvivalTimerTimeout;
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,27 +42,66 @@ public partial class BaseScene : Node
         _transitionScene = GetTree().GetNodesInGroup("transition")[0] as TransitionScene;
         //subscribe to transition scene's IrisClose event
         _transitionScene.IrisCloseSignal += OnIrisCloseSignal;
+
+        survivalTimer.Start();
+    }
+
+    public void OnSurvivalTimerTimeout()
+    {
+        _isTransitioningToNextLevel = true;
+        _transitionScene.IrisClose();
     }
 
     public void OnIrisCloseSignal()
     {
-        //Player gets queued free by obstacle/enemy
+        //Check if we are transitioning to next level
+        if (_isTransitioningToNextLevel)
+        {
+            _isTransitioningToNextLevel = false;
 
-        _currentLevel.QueueFree();
+            //Player survived the level
+            _currentLevel.QueueFree();
 
-        //Start the same level again
-        var level = levels[_currentLevelIndex].Instantiate();
-        _currentLevel = level;
+            _currentLevelIndex++;
+            if (_currentLevelIndex >= levels.Count)
+            {
+                GetTree().Quit();
+            }
+            var newLevel = levels[_currentLevelIndex].Instantiate();
+            _currentLevel = newLevel;
 
-        AddChild(level);
+            AddChild(newLevel);
 
-        //get transition scene from group (note: might be multiple transition scenes in the group, add last one)
-        _transitionScene =
-            GetTree().GetNodesInGroup("transition")[
-                GetTree().GetNodesInGroup("transition").Count - 1
-            ] as TransitionScene;
-        GD.Print("TransitionScene: " + _transitionScene);
-        //subscribe to transition scene's IrisClose event
-        _transitionScene.IrisCloseSignal += OnIrisCloseSignal;
+            //get transition scene from group (note: might be multiple transition scenes in the group, add last one)
+            _transitionScene =
+                GetTree().GetNodesInGroup("transition")[
+                    GetTree().GetNodesInGroup("transition").Count - 1
+                ] as TransitionScene;
+            //subscribe to transition scene's IrisClose event
+            _transitionScene.IrisCloseSignal += OnIrisCloseSignal;
+
+            //restart timer
+            survivalTimer.Start();
+        }
+        else
+        {
+            //Player gets queued free by obstacle/enemy
+
+            _currentLevel.QueueFree();
+
+            //Start the same level again
+            var level = levels[_currentLevelIndex].Instantiate();
+            _currentLevel = level;
+
+            AddChild(level);
+
+            //get transition scene from group (note: might be multiple transition scenes in the group, add last one)
+            _transitionScene =
+                GetTree().GetNodesInGroup("transition")[
+                    GetTree().GetNodesInGroup("transition").Count - 1
+                ] as TransitionScene;
+            //subscribe to transition scene's IrisClose event
+            _transitionScene.IrisCloseSignal += OnIrisCloseSignal;
+        }
     }
 }

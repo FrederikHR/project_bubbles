@@ -12,3 +12,7 @@ script = ExtResource("1_x6vbk")
 levels = Array[PackedScene]([ExtResource("2_oehdv"), ExtResource("3_u2qye"), ExtResource("4_5vyli"), ExtResource("5_10ua3")])
 
 [node name="StartScreen" parent="." instance=ExtResource("2_kk5up")]
+
+[node name="SurvivalTimer" type="Timer" parent="."]
+wait_time = 7.0
+one_shot = true
