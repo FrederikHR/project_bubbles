@@ -27,6 +27,10 @@ public partial class TransitionScene : Control
         _player = GetTree().GetNodesInGroup("player")[0] as Player;
         //subscribe to player's Died event
         _player.Died += OnPlayerDied;
+
+        //get aspect ratio for material
+        Vector2I windowSize = DisplayServer.WindowGetSize();
+        _shaderMaterial.SetShaderParameter("screen_size", windowSize);
     }
 
     public async void IrisClose()
