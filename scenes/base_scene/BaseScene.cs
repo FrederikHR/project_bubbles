@@ -6,6 +6,9 @@ public partial class BaseScene : Node
     [Export]
     public Godot.Collections.Array<PackedScene> levels;
 
+    [Export]
+    public Godot.Collections.Array<float> levelTimes;
+
     private Node _currentLevel = null;
     private int _currentLevelIndex = 0;
 
@@ -23,6 +26,12 @@ public partial class BaseScene : Node
 
         survivalTimer = GetNode<Timer>("SurvivalTimer");
         survivalTimer.Timeout += OnSurvivalTimerTimeout;
+
+        // Check if the number of levels and level times match
+        if (levels.Count != levelTimes.Count)
+        {
+            GD.PrintErr("Number of levels and level times do not match");
+        }
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -43,6 +52,7 @@ public partial class BaseScene : Node
         //subscribe to transition scene's IrisClose event
         _transitionScene.IrisCloseSignal += OnIrisCloseSignal;
 
+        survivalTimer.WaitTime = levelTimes[0];
         survivalTimer.Start();
     }
 
@@ -80,7 +90,8 @@ public partial class BaseScene : Node
             //subscribe to transition scene's IrisClose event
             _transitionScene.IrisCloseSignal += OnIrisCloseSignal;
 
-            //restart timer
+            //restart timer with new time
+            survivalTimer.WaitTime = levelTimes[_currentLevelIndex];
             survivalTimer.Start();
         }
         else

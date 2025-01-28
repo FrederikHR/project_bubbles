@@ -10,6 +10,7 @@
 [node name="BaseScene" type="Node"]
 script = ExtResource("1_x6vbk")
 levels = Array[PackedScene]([ExtResource("2_oehdv"), ExtResource("3_u2qye"), ExtResource("4_5vyli"), ExtResource("5_10ua3")])
+levelTimes = Array[float]([7.0, 3.0, 4.0, 6.0])
 
 [node name="StartScreen" parent="." instance=ExtResource("2_kk5up")]
 
