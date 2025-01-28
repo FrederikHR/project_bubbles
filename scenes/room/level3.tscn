@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4a1wki2kn76v"]
+[gd_scene load_steps=5 format=3 uid="uid://b4a1wki2kn76v"]
 
 [ext_resource type="PackedScene" uid="uid://txouyjemv1v" path="res://scenes/room/room.tscn" id="1_qbtet"]
-[ext_resource type="PackedScene" uid="uid://deb8m8jje6q5o" path="res://scenes/obstacles/Rocket.tscn" id="2_l6upl"]
+[ext_resource type="PackedScene" path="res://scenes/obstacles/Rocket.tscn" id="2_l6upl"]
 [ext_resource type="PackedScene" uid="uid://bbrki0i4p0s5e" path="res://scenes/player/player.tscn" id="3_7l5pa"]
+[ext_resource type="PackedScene" uid="uid://cl3b36ko0j28q" path="res://scenes/transition_scene/transition_scene.tscn" id="4_6qe7x"]
 
 [node name="Level3" type="Node2D"]
 
@@ -26,5 +27,11 @@ position = Vector2(815, -221)
 [node name="Rocket6" parent="." instance=ExtResource("2_l6upl")]
 position = Vector2(740, -221)
 
-[node name="Player" parent="." instance=ExtResource("3_7l5pa")]
+[node name="Player" parent="." groups=["player"] instance=ExtResource("3_7l5pa")]
 position = Vector2(429, 290)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TransitionScene" parent="CanvasLayer" instance=ExtResource("4_6qe7x")]
+irisValue = 0.0
+metadata/_edit_use_anchors_ = true
