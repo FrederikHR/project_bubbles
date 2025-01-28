@@ -62,7 +62,7 @@ _data = {
 "RESET": SubResource("Animation_pyq6n")
 }
 
-[node name="TransitionScene" type="Control"]
+[node name="TransitionScene" type="Control" groups=["transition"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

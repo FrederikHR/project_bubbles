@@ -3,6 +3,9 @@ using System;
 
 public partial class TransitionScene : Control
 {
+    [Signal]
+    public delegate void IrisCloseSignalEventHandler();
+
     [Export(PropertyHint.Range, "0.0,1.5")]
     public float irisValue = 1.5f;
 
@@ -18,6 +21,7 @@ public partial class TransitionScene : Control
         _shaderMaterial = (ShaderMaterial)GetNode<ColorRect>("IrisTransition").Material;
         _shaderMaterial.SetShaderParameter("radius", irisValue);
         IrisOpen();
+        GD.Print("TransitionScene Ready");
 
         //get player from "player" group
         _player = GetTree().GetNodesInGroup("player")[0] as Player;
@@ -29,10 +33,12 @@ public partial class TransitionScene : Control
     {
         _animationPlayer.Play("IrisClose");
         await ToSignal(_animationPlayer, "animation_finished");
+        EmitSignal(SignalName.IrisCloseSignal);
     }
 
     public async void IrisOpen()
     {
+        GD.Print("IrisOpen");
         _animationPlayer.Play("IrisOpen");
         await ToSignal(_animationPlayer, "animation_finished");
     }

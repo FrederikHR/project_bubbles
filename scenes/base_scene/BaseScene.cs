@@ -10,7 +10,7 @@ public partial class BaseScene : Node
     private int _currentLevelIndex = 0;
 
     private StartScreen _startScreen;
-    private Player _player;
+    private TransitionScene _transitionScene;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -27,13 +27,18 @@ public partial class BaseScene : Node
         var level = levels[0].Instantiate();
         _currentLevel = level;
 
-        _player = level.GetNode<Player>("Player");
-        _player.Died += OnPlayerDied;
+        //_player = level.GetNode<Player>("Player");
+        //_player.Died += OnPlayerDied;
 
         AddChild(level);
+
+        //get transition scene from group
+        _transitionScene = GetTree().GetNodesInGroup("transition")[0] as TransitionScene;
+        //subscribe to transition scene's IrisClose event
+        _transitionScene.IrisCloseSignal += OnIrisCloseSignal;
     }
 
-    public void OnPlayerDied()
+    public void OnIrisCloseSignal()
     {
         //Player gets queued free by obstacle/enemy
 
@@ -43,9 +48,15 @@ public partial class BaseScene : Node
         var level = levels[_currentLevelIndex].Instantiate();
         _currentLevel = level;
 
-        _player = level.GetNode<Player>("Player");
-        _player.Died += OnPlayerDied;
-
         AddChild(level);
+
+        //get transition scene from group (note: might be multiple transition scenes in the group, add last one)
+        _transitionScene =
+            GetTree().GetNodesInGroup("transition")[
+                GetTree().GetNodesInGroup("transition").Count - 1
+            ] as TransitionScene;
+        GD.Print("TransitionScene: " + _transitionScene);
+        //subscribe to transition scene's IrisClose event
+        _transitionScene.IrisCloseSignal += OnIrisCloseSignal;
     }
 }
