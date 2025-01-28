@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4a1wki2kn76v"]
+[gd_scene load_steps=4 format=3 uid="uid://cejsbgde7jhko"]
 
 [ext_resource type="PackedScene" uid="uid://txouyjemv1v" path="res://scenes/room/room.tscn" id="1_qbtet"]
-[ext_resource type="PackedScene" uid="uid://deb8m8jje6q5o" path="res://scenes/obstacles/Rocket.tscn" id="2_l6upl"]
+[ext_resource type="PackedScene" path="res://scenes/obstacles/Rocket.tscn" id="2_l6upl"]
 [ext_resource type="PackedScene" uid="uid://bbrki0i4p0s5e" path="res://scenes/player/player.tscn" id="3_7l5pa"]
 
 [node name="Level3" type="Node2D"]
@@ -22,9 +22,11 @@ WaitTime = 0.695
 
 [node name="Rocket5" parent="." instance=ExtResource("2_l6upl")]
 position = Vector2(815, -221)
+WaitTime = 0.1
 
 [node name="Rocket6" parent="." instance=ExtResource("2_l6upl")]
 position = Vector2(740, -221)
+WaitTime = 0.5
 
 [node name="Player" parent="." instance=ExtResource("3_7l5pa")]
 position = Vector2(429, 290)

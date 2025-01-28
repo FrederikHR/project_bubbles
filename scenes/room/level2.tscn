@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dt0jc0bw5rika"]
+[gd_scene load_steps=4 format=3 uid="uid://d01sa508lahlc"]
 
 [ext_resource type="PackedScene" uid="uid://txouyjemv1v" path="res://scenes/room/room.tscn" id="1_fxed4"]
 [ext_resource type="PackedScene" uid="uid://trlyg73nop7f" path="res://scenes/pencil/pencil.tscn" id="2_2yanl"]
-[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="3_q5p58"]
+[ext_resource type="PackedScene" uid="uid://bbrki0i4p0s5e" path="res://scenes/player/player.tscn" id="3_q5p58"]
 
 [node name="Level2" type="Node2D"]
 

@@ -12,21 +12,20 @@ public partial class Rocket : Obstacle
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
-        move();
+        move(delta);
     }
     public void _on_launch_timer_timeout(){
         Launch = true;
     }
-    public override void move(){
-                Vector2 velocity = Velocity;
+
+    public override void move(double delta)
+    {
+        Vector2 velocity = Velocity;
 
         if (Launch) {
-            velocity.Y -= 10;
+            velocity.Y -= 100 * (float)delta;
         }
         Velocity = velocity;
-                    MoveAndSlide();
-
+        MoveAndSlide();
     }
-    
-    
 }
