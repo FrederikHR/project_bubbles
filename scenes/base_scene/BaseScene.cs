@@ -12,11 +12,16 @@ public partial class BaseScene : Node
     private StartScreen _startScreen;
     private Player _player;
 
+    private ProgressHud _progressHUD;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         _startScreen = GetNode<StartScreen>("StartScreen");
         _startScreen.StartGame += OnStartGame;
+
+        _progressHUD = GetNode<ProgressHud>("BaseCanvasLayer/ProgressHUD");
+        _progressHUD.Hide();
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,6 +36,9 @@ public partial class BaseScene : Node
         _player.Died += OnPlayerDied;
 
         AddChild(level);
+
+        //show progress HUD
+        _progressHUD.Show();
     }
 
     public void OnPlayerDied()
