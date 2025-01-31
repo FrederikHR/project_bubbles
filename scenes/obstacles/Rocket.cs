@@ -14,19 +14,21 @@ public partial class Rocket : Obstacle
     {
         move(delta);
     }
-    public void _on_launch_timer_timeout(){
+
+    public void _on_launch_timer_timeout()
+    {
         Launch = true;
     }
-    public override void move(){
-                Vector2 velocity = Velocity;
 
-        if (Launch) {
+    public void move(double delta)
+    {
+        Vector2 velocity = Velocity;
+
+        if (Launch)
+        {
             velocity.Y -= 10;
         }
         Velocity = velocity;
-                    MoveAndSlide();
-
+        MoveAndSlide();
     }
-    
-    
 }

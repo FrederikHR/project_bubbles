@@ -31,7 +31,7 @@ public partial class Spikes : Obstacle
         Vector2 velocity = Velocity;
         if (Launch)
         {
-            switch (direction) 
+            switch (direction)
             {
                 case Direction.RIGHT:
                     velocity.X += speed * (float)delta;
