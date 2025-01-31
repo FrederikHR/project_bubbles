@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddaxg2cjbjimv"]
+
+[ext_resource type="Script" path="res://scenes/progress_hud/ProgressHud.cs" id="1_43gvw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edidp"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b5qqn"]
+content_margin_left = 1.0
+content_margin_top = 1.0
+content_margin_right = 1.0
+content_margin_bottom = 1.0
+bg_color = Color(0, 0, 0, 1)
+
+[node name="ProgressHUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_43gvw")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 27.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 50
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_edidp")
+theme_override_styles/fill = SubResource("StyleBoxFlat_b5qqn")
+show_percentage = false

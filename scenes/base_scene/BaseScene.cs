@@ -18,6 +18,8 @@ public partial class BaseScene : Node
     private Timer survivalTimer;
     private bool _isTransitioningToNextLevel = false;
 
+    private ProgressHud _progressHUD;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -32,11 +34,20 @@ public partial class BaseScene : Node
         {
             GD.PrintErr("Number of levels and level times do not match");
         }
+
+        _progressHUD = GetNode<ProgressHud>("BaseCanvasLayer/ProgressHUD");
+        _progressHUD.Hide();
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
     {
+        // Update progress HUD based on ratio of survival timer and level time
+        if (_currentLevel != null)
+        {
+            double progress = survivalTimer.TimeLeft / survivalTimer.WaitTime;
+            _progressHUD.UpdateProgress((float)progress * 100.0f);
+        }
         if (Input.IsActionJustPressed("ui_cancel"))
         {
             //reset the game
@@ -61,6 +72,9 @@ public partial class BaseScene : Node
 
         survivalTimer.WaitTime = levelTimes[0];
         survivalTimer.Start();
+
+        //show progress HUD
+        _progressHUD.Show();
     }
 
     public void OnSurvivalTimerTimeout()

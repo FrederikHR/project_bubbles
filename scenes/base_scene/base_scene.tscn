@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3b4hk6a1qata"]
+[gd_scene load_steps=8 format=3 uid="uid://b3b4hk6a1qata"]
 
 [ext_resource type="Script" path="res://scenes/base_scene/BaseScene.cs" id="1_x6vbk"]
 [ext_resource type="PackedScene" uid="uid://dt5ubmi2dgjp0" path="res://scenes/room/level1.tscn" id="2_5cwwa"]
 [ext_resource type="PackedScene" uid="uid://coxkucrqsm4pb" path="res://scenes/start_screen/start_screen.tscn" id="2_kk5up"]
-[ext_resource type="PackedScene" uid="uid://d01sa508lahlc" path="res://scenes/room/level2.tscn" id="3_vyo2o"]
-[ext_resource type="PackedScene" uid="uid://cejsbgde7jhko" path="res://scenes/room/level3.tscn" id="4_ajk4s"]
-[ext_resource type="PackedScene" uid="uid://dcyvhqcvt24x1" path="res://scenes/room/level_s.tscn" id="5_32ppj"]
+[ext_resource type="PackedScene" uid="uid://dt5ubmi2dgjp0" path="res://scenes/room/level1.tscn" id="2_oehdv"]
+[ext_resource type="PackedScene" uid="uid://dt0jc0bw5rika" path="res://scenes/room/level2.tscn" id="3_u2qye"]
+[ext_resource type="PackedScene" uid="uid://b4a1wki2kn76v" path="res://scenes/room/level3.tscn" id="4_5vyli"]
+[ext_resource type="PackedScene" uid="uid://dcyvhqcvt24x1" path="res://scenes/room/level_s.tscn" id="5_10ua3"]
+[ext_resource type="PackedScene" uid="uid://ddaxg2cjbjimv" path="res://scenes/progress_hud/progress_hud.tscn" id="7_2o570"]
+
 
 [node name="BaseScene" type="Node"]
 script = ExtResource("1_x6vbk")
@@ -17,3 +20,8 @@ levelTimes = Array[float]([7.0, 3.0, 4.0, 6.0])
 [node name="SurvivalTimer" type="Timer" parent="."]
 wait_time = 7.0
 one_shot = true
+
+[node name="BaseCanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ProgressHUD" parent="BaseCanvasLayer" instance=ExtResource("7_2o570")]
