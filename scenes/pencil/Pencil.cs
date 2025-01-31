@@ -19,26 +19,26 @@ public partial class Pencil : Obstacle
             {
                 case Direction.RIGHT_UP_DIAGONAL:
 
-                    velocity.X += speed;
-                    velocity.Y -= speed;
+                    velocity.X += speed * (float)delta;
+                    velocity.Y -= speed * (float)delta;
                     break;
 
                 case Direction.RIGHT_DOWN_DIAGONAL:
 
-                    velocity.X -= speed;
-                    velocity.Y += speed;
+                    velocity.X -= speed * (float)delta;
+                    velocity.Y += speed * (float)delta;
                     break;
 
                 case Direction.LEFT_UP_DIAGONAL:
 
-                    velocity.X -= speed;
-                    velocity.Y -= speed;
+                    velocity.X -= speed * (float)delta;
+                    velocity.Y -= speed * (float)delta;
                     break;
 
                 case Direction.LEFT_DOWN_DIAGONAL:
 
-                    velocity.X += speed;
-                    velocity.Y += speed;
+                    velocity.X += speed * (float)delta;
+                    velocity.Y += speed * (float)delta;
                     break;
             }
             Velocity = velocity;
