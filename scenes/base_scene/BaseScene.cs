@@ -35,7 +35,14 @@ public partial class BaseScene : Node
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta) { }
+    public override void _Process(double delta)
+    {
+        if (Input.IsActionJustPressed("ui_cancel"))
+        {
+            //reset the game
+            GetTree().ReloadCurrentScene();
+        }
+    }
 
     public void OnStartGame()
     {

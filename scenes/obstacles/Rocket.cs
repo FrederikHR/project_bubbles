@@ -21,7 +21,7 @@ public partial class Rocket : Obstacle
         Launch = true;
     }
 
-    public override void move(double delta)
+    public void move(double delta)
     {
         Vector2 velocity = Velocity;
 
