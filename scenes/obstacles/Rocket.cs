@@ -13,8 +13,11 @@ public partial class Rocket : Obstacle
     public override void _Process(double delta)
     {
         move(delta);
+        move(delta);
     }
-    public void _on_launch_timer_timeout(){
+
+    public void _on_launch_timer_timeout()
+    {
         Launch = true;
     }
 
@@ -22,7 +25,8 @@ public partial class Rocket : Obstacle
     {
         Vector2 velocity = Velocity;
 
-        if (Launch) {
+        if (Launch)
+        {
             velocity.Y -= 100 * (float)delta;
         }
         Velocity = velocity;

@@ -22,3 +22,4 @@ position = Vector2(480, 286)
 
 [node name="TransitionScene" parent="CanvasLayer" instance=ExtResource("4_18hyh")]
 irisValue = 0.0
+metadata/_edit_use_anchors_ = true

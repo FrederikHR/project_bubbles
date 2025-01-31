@@ -32,5 +32,11 @@ rotation = -0.785398
 WaitTime = 1.0
 direction = 7
 
-[node name="Player" parent="." instance=ExtResource("3_q5p58")]
+[node name="Player" parent="." groups=["player"] instance=ExtResource("3_q5p58")]
 position = Vector2(468, 314)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TransitionScene" parent="CanvasLayer" instance=ExtResource("4_dfdri")]
+irisValue = 0.0
+metadata/_edit_use_anchors_ = true
