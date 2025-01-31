@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dt5ubmi2dgjp0"]
 
 [ext_resource type="PackedScene" uid="uid://txouyjemv1v" path="res://scenes/room/room.tscn" id="1_n06rr"]
-[ext_resource type="PackedScene" uid="uid://d0y8hl511t1kn" path="res://scenes/obstacles/spikes.tscn" id="2_f1cm0"]
+[ext_resource type="PackedScene" uid="uid://cqnhahrw6ocpc" path="res://scenes/obstacles/spikes.tscn" id="2_f1cm0"]
 [ext_resource type="PackedScene" uid="uid://bbrki0i4p0s5e" path="res://scenes/player/player.tscn" id="3_euvcu"]
 [ext_resource type="PackedScene" uid="uid://cl3b36ko0j28q" path="res://scenes/transition_scene/transition_scene.tscn" id="4_fsvt7"]
 
