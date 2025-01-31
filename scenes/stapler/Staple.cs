@@ -33,7 +33,7 @@ public partial class Staple : Node2D
         if (body.IsInGroup("player"))
         {
             GD.Print("Player hit by staple");
-            body.CallDeferred("queue_free");
+            body.CallDeferred("Die");
             Stapler.playerReference = null;
             QueueFree();
             return;
