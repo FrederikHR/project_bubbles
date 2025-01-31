@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0y8hl511t1kn"]
+[gd_scene load_steps=3 format=3 uid="uid://cqnhahrw6ocpc"]
 
 [ext_resource type="Script" path="res://scenes/obstacles/Spikes.cs" id="1_c1oxt"]
 [ext_resource type="Texture2D" uid="uid://b6gps65jtsuaq" path="res://assets/filledSpikes.png" id="1_jbiq1"]

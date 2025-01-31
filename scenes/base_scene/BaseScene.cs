@@ -48,6 +48,11 @@ public partial class BaseScene : Node
             double progress = survivalTimer.TimeLeft / survivalTimer.WaitTime;
             _progressHUD.UpdateProgress((float)progress * 100.0f);
         }
+        if (Input.IsActionJustPressed("ui_cancel"))
+        {
+            //reset the game
+            GetTree().ReloadCurrentScene();
+        }
     }
 
     public void OnStartGame()
