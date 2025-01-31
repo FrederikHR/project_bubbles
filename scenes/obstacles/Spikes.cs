@@ -26,12 +26,12 @@ public partial class Spikes : Obstacle
         Launch = true;
     }
 
-    public override void move(double delta)
+    public void move(double delta)
     {
         Vector2 velocity = Velocity;
         if (Launch)
         {
-            switch (direction) 
+            switch (direction)
             {
                 case Direction.RIGHT:
                     velocity.X += speed * (float)delta;
