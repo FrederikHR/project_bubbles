@@ -79,6 +79,7 @@ public partial class Player : CharacterBody2D
 
     public void Die()
     {
+        GD.Print("Player called Die");
         EmitSignal(SignalName.Died);
         CallDeferred("queue_free");
     }

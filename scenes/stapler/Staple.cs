@@ -32,11 +32,10 @@ public partial class Staple : Node2D
         //CHeck if body in group "player"
         if (body.IsInGroup("player"))
         {
+            var player = body as Player;
             GD.Print("Player hit by staple");
-            body.CallDeferred("Die");
+            player.Die();
             Stapler.playerReference = null;
-            QueueFree();
-            return;
         }
 
         QueueFree();

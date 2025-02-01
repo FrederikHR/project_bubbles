@@ -56,8 +56,8 @@ public partial class Spikes : Obstacle
     {
         if (body.IsInGroup("player"))
         {
-            Player player = (Player)body;
-            player.CallDeferred("Die");
+            Player player = body as Player;
+            player.Die();
         }
     }
 }

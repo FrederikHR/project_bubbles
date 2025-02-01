@@ -31,7 +31,7 @@ rotation = -1.5708
 WaitTime = 4.0
 direction = 2
 
-[node name="Player" parent="." groups=["player"] instance=ExtResource("3_euvcu")]
+[node name="Player" parent="." instance=ExtResource("3_euvcu")]
 position = Vector2(465, 307)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

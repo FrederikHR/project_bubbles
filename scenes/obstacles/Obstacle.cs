@@ -33,7 +33,6 @@ public partial class Obstacle : CharacterBody2D
         timer = GetNode<Timer>("LaunchTimer");
         timer.WaitTime = WaitTime;
         timer.Start();
-        GD.Print("WaitTime: ", timer.WaitTime);
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.

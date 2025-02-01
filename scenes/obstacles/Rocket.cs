@@ -7,6 +7,9 @@ public partial class Rocket : Obstacle
     public override void _Ready()
     {
         base._Ready();
+
+        var area2D = GetNode<Area2D>("Area2D");
+        area2D.BodyEntered += OnArea2DBodyEntered;
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,5 +34,14 @@ public partial class Rocket : Obstacle
         }
         Velocity = velocity;
         MoveAndSlide();
+    }
+
+    private void OnArea2DBodyEntered(Node body)
+    {
+        if (body.IsInGroup("player"))
+        {
+            Player player = (Player)body;
+            player.Die();
+        }
     }
 }

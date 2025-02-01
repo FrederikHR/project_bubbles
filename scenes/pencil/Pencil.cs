@@ -7,6 +7,10 @@ public partial class Pencil : Obstacle
     public override void _Ready()
     {
         base._Ready();
+
+        //Connect to Area2D's body_entered signal
+        Area2D area2D = GetNode<Area2D>("Area2D");
+        area2D.BodyEntered += OnArea2DBodyEntered;
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -51,5 +55,14 @@ public partial class Pencil : Obstacle
     {
         GD.Print("Timer ended");
         Launch = true;
+    }
+
+    private void OnArea2DBodyEntered(Node body)
+    {
+        if (body.IsInGroup("player"))
+        {
+            Player player = body as Player;
+            player.Die();
+        }
     }
 }
