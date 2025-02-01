@@ -1,12 +1,12 @@
 [gd_scene load_steps=85 format=3 uid="uid://bbrki0i4p0s5e"]
 
 [ext_resource type="Script" path="res://scenes/player/Player.cs" id="1_0btqh"]
-[ext_resource type="Texture2D" path="res://assets/bubble/bubbleSprite.png" id="2_e7ae5"]
 [ext_resource type="Texture2D" uid="uid://db5263hoase8t" path="res://assets/wind.png" id="3_crr8r"]
 [ext_resource type="Texture2D" uid="uid://5f3fm1o4wltk" path="res://assets/bubble/bubbleAnimationWorking/bottomToTop.png" id="4_4lt0t"]
 [ext_resource type="Texture2D" uid="uid://2v0ajimrmwbc" path="res://assets/bubble/bubbleAnimationWorking/topToBottom.png" id="5_4sh1k"]
 [ext_resource type="Texture2D" uid="uid://bn6lddrds0sy3" path="res://assets/bubble/bubbleAnimationWorking/leftToRight.png" id="5_amt8b"]
 [ext_resource type="Texture2D" uid="uid://cjbjhebfrcb6k" path="res://assets/bubble/bubbleAnimationWorking/rightToLeft.png" id="6_bk6vx"]
+[ext_resource type="Texture2D" uid="uid://by3jaa0axf0p0" path="res://assets/bubble/bubble.png" id="7_hqjct"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wx5tp"]
 radius = 87.0517
@@ -434,7 +434,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_r8q71")
 }],
 "loop": true,
-"name": &"new_animation",
+"name": &"leftToRight",
 "speed": 24.0
 }, {
 "frames": [{
@@ -567,15 +567,17 @@ GravityFactor = 0.1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wx5tp")
 
-[node name="TempSprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_e7ae5")
-
 [node name="TempWindSprite" type="Sprite2D" parent="." groups=["player"]]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_crr8r")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(546, 456)
+[node name="Animations" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.896, 0.9)
 sprite_frames = SubResource("SpriteFrames_w3h7o")
-animation = &"topToBottom"
-frame_progress = 0.711024
+animation = &"leftToRight"
+frame_progress = 0.0616158
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(2, -18)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("7_hqjct")
