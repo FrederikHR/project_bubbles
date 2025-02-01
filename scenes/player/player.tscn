@@ -559,23 +559,24 @@ animations = [{
 "speed": 24.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
-scale = Vector2(0.5, 0.5)
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+scale = Vector2(0.25, 0.25)
 script = ExtResource("1_0btqh")
 GravityFactor = 0.1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wx5tp")
 
-[node name="TempWindSprite" type="Sprite2D" parent="." groups=["player"]]
-scale = Vector2(0.1, 0.1)
+[node name="TempWindSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_crr8r")
 
 [node name="Animations" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.896, 0.9)
 sprite_frames = SubResource("SpriteFrames_w3h7o")
-animation = &"leftToRight"
-frame_progress = 0.0616158
+animation = &"topToBottom"
+frame = 8
+frame_progress = 0.735385
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(2, -18)

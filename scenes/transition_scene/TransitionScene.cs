@@ -21,11 +21,9 @@ public partial class TransitionScene : Control
         _shaderMaterial = (ShaderMaterial)GetNode<ColorRect>("IrisTransition").Material;
         _shaderMaterial.SetShaderParameter("radius", irisValue);
         IrisOpen();
-        GD.Print("TransitionScene Ready");
 
-        //get player from "player" group
-        _player = GetTree().GetNodesInGroup("player")[0] as Player;
-        //subscribe to player's Died event
+        //get player
+        _player = GetNode<Player>("../../Player");
         _player.Died += OnPlayerDied;
 
         //get aspect ratio for material
@@ -42,13 +40,13 @@ public partial class TransitionScene : Control
 
     public async void IrisOpen()
     {
-        GD.Print("IrisOpen");
         _animationPlayer.Play("IrisOpen");
         await ToSignal(_animationPlayer, "animation_finished");
     }
 
     public void OnPlayerDied()
     {
+        GD.Print("Player died");
         IrisClose();
     }
 }

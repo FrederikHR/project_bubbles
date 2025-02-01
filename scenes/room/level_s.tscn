@@ -15,7 +15,7 @@ staplerTopRotation = 0.0
 playerReference = NodePath("../Player")
 stapleSpeed = 200.0
 
-[node name="Player" parent="." groups=["player"] instance=ExtResource("3_q15ml")]
+[node name="Player" parent="." instance=ExtResource("3_q15ml")]
 position = Vector2(480, 286)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

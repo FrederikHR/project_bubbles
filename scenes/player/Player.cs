@@ -17,9 +17,15 @@ public partial class Player : CharacterBody2D
 
     private Sprite2D WindSprite;
 
+    private Sprite2D _sprite;
+    private AnimatedSprite2D _animatedSprite;
+
     public override void _Ready()
     {
         WindSprite = GetNode<Sprite2D>("TempWindSprite");
+
+        _sprite = GetNode<Sprite2D>("Sprite");
+        _animatedSprite = GetNode<AnimatedSprite2D>("Animations");
     }
 
     public override void _PhysicsProcess(double delta)
@@ -39,19 +45,22 @@ public partial class Player : CharacterBody2D
         {
             velocity.X = direction.X * Speed;
             velocity.Y = direction.Y < 0 ? direction.Y * Speed * upSpeedFactor : velocity.Y;
-            windMovement(direction);
+            WindMovement(direction);
         }
         else
         {
             velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-            windMovement(Vector2.Zero);
+            WindMovement(Vector2.Zero);
         }
 
         Velocity = velocity;
         MoveAndSlide();
+
+        // Check for collisions with walls
+        CollisionHandling();
     }
 
-    private void windMovement(Vector2 windDirection)
+    private void WindMovement(Vector2 windDirection)
     {
         //make sure windDirection.Y is negative or zero
         windDirection.Y = windDirection.Y > 0 ? 0 : windDirection.Y;
@@ -70,10 +79,80 @@ public partial class Player : CharacterBody2D
             WindSprite.Show();
 
             // Move wind sprite offset by the wind direction.
-            WindSprite.Position = -windDirection * 100;
+            WindSprite.Position = -windDirection * 200;
 
             // Rotate the wind sprite to face the wind direction.
             WindSprite.Rotation = windDirection.Angle();
+        }
+    }
+
+    public void CollisionHandling()
+    {
+        if (GetSlideCollisionCount() == 0)
+        {
+            _sprite.Show();
+            _animatedSprite.Hide();
+
+            // Reset the animation sprite position
+            _animatedSprite.Position = Vector2.Zero;
+        }
+        else
+        {
+            for (int i = 0; i < GetSlideCollisionCount(); i++)
+            {
+                KinematicCollision2D collision = GetSlideCollision(i);
+                if (collision.GetCollider() is StaticBody2D)
+                {
+                    //CHeck which side the collision is on
+                    Vector2 collisionNormal = collision.GetNormal();
+                    if (
+                        Mathf.Abs(collisionNormal.X) > Mathf.Abs(collisionNormal.Y)
+                        && collisionNormal.Length() > 0.1
+                    )
+                    {
+                        if (collisionNormal.X > 0)
+                        {
+                            // We hit the left wall
+                            _sprite.Hide();
+                            _animatedSprite.Show();
+                            _animatedSprite.Play("rightToLeft");
+
+                            //offset the animation sprite to the right
+                            _animatedSprite.Position = new Vector2(50, 0);
+                        }
+                        else if (collisionNormal.X < 0)
+                        {
+                            // We hit the right wall
+                            _sprite.Hide();
+                            _animatedSprite.Show();
+                            _animatedSprite.Play("leftToRight");
+                        }
+                    }
+                    else
+                    {
+                        if (collisionNormal.Y > 0)
+                        {
+                            // We hit the ceiling
+                            _sprite.Hide();
+                            _animatedSprite.Show();
+                            _animatedSprite.Play("bottomToTop");
+
+                            //offset the animation sprite to the bottom
+                            //_animatedSprite.Position = new Vector2(0, 70);
+                        }
+                        else if (collisionNormal.Y < 0)
+                        {
+                            // We hit the floor
+                            _sprite.Hide();
+                            _animatedSprite.Show();
+                            _animatedSprite.Play("topToBottom");
+
+                            //offset the animation sprite to the top
+                            _animatedSprite.Position = new Vector2(0, -40);
+                        }
+                    }
+                }
+            }
         }
     }
 

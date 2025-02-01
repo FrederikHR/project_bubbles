@@ -118,7 +118,6 @@ public partial class BaseScene : Node
         else
         {
             //Player gets queued free by obstacle/enemy
-
             _currentLevel.QueueFree();
 
             //Start the same level again
@@ -126,6 +125,10 @@ public partial class BaseScene : Node
             _currentLevel = level;
 
             AddChild(level);
+
+            //restart timer with new time
+            survivalTimer.WaitTime = levelTimes[_currentLevelIndex];
+            survivalTimer.Start();
 
             //get transition scene from group (note: might be multiple transition scenes in the group, add last one)
             _transitionScene =
